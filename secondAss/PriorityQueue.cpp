@@ -5,22 +5,29 @@
 #include <iostream>
 using namespace std;
 
-PriorityQueue :: PriorityQueue(){
+PriorityQueue :: PriorityQueue() : NumElements(0){
+	
+}
+
+PriorityQueue :: ~PriorityQueue(){
 
 }
 
 // Workaround to iterate on a list.
 void PriorityQueue :: PrintQueue(){
-	std::priority_queue<pairtype, vector<pairtype>, greater<pairtype> > temp = Queue;
+	priority_queue<pairtype, vector<pairtype>, greater<pairtype> > temp;
+	temp = Queue;
 	while(!temp.empty()){
 		cout << temp.top().first << " " << temp.top().second << " " << endl;
 		temp.pop();
 	}
 }
 
-void PriorityQueue :: Insert(unsigned int QueueElem, unsigned int Priority){
+
+void PriorityQueue :: Insert(unsigned int Priority, unsigned int QueueElem){
 	pairtype tmp(Priority, QueueElem);
 	Queue.push(tmp);
+	NumElements ++;
 }
 
 void PriorityQueue :: DecrPriority(unsigned int QueueElem, unsigned int Priority){
@@ -31,9 +38,13 @@ unsigned int PriorityQueue :: Size(){
 	return Queue.size();
 }
 
+pairtype PriorityQueue :: Top(){
+	return Queue.top();
+}
 
-void PriorityQueue :: minPriority(){
+void PriorityQueue :: PickMinPriority(){
 	Queue.pop();
+	NumElements--;
 }
 
 

@@ -10,7 +10,10 @@ using namespace std;
 int main(int argc, char *argv[])
 {
 	Graph G(100, 5);
+	G.PrintGraph();
 	Algo A(G);
-	A
+	A.path(0,1);
+
+	
 	return 0;
 }

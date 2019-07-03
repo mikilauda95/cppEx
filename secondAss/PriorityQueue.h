@@ -31,13 +31,13 @@ public:
 	void DecrPriority(unsigned int QueueElem, unsigned int Priority);
 
 	// Removes the top element of the queue
-	void minPriority();
+	void PickMinPriority();
 
 	bool Contains(unsigned int queue_element);
 
 	void Insert(unsigned int QueueElem, unsigned int Priority);
 		
-	unsigned int Top();
+	pairtype Top();
 
 	unsigned int Size();
 	

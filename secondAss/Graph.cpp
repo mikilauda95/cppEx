@@ -118,7 +118,7 @@ void Graph :: PrintAvPathLen(unsigned int NodeNum){
 vector<unsigned int> Graph :: GetAdiacents(unsigned int NodeNum){
 	vector<unsigned int> tmp;
 	for (int i = 0; i < NumNodes; ++i) {
-		if (EdgeMatrix[i][NodeNum] > 0 ) {
+		if (EdgeMatrix[i][NodeNum] > 0) {
 			tmp.push_back(i);
 		}
 	}

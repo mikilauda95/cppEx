@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=-I.
 
-OBJ = testalgo.o Graph.o PriorityQueue.o
+OBJ = testalgo.o Graph.o PriorityQueue.o Algo.o
 OBJ1 = testgraph.o Graph.o 
 OBJ2 = testqueue.o PriorityQueue.o
 
