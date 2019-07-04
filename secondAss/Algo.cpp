@@ -12,7 +12,8 @@ Algo :: Algo(Graph G):G(G){
 }
 
 vector<unsigned int> Algo :: ComputeShortestPath(unsigned int start,unsigned int dest){
-	PriorityQueue closeSet, openSet;
+	PriorityQueue<unsigned int> openSet;
+	PriorityQueue<StartDest> closeSet;
 	vector<unsigned int> adiacents;
 	openSet.Insert(0, start);
 	pairtype nextNode;

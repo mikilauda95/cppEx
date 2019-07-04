@@ -7,17 +7,18 @@
 #include <iostream>
 using namespace std;
 
-//template <class T=unsigned int> 
+
+
 
 typedef pair<unsigned int, unsigned int> pairtype;
 
+template<class T>
 class PriorityQueue
 {
 private:
 	unsigned int NumElements;
 
-	priority_queue<pairtype, vector<pairtype>, greater<pairtype> > Queue;
-	vector<pairtype> Costs;
+	priority_queue<T, vector<T>, greater<T> > Queue;
 
 
 public:
@@ -33,11 +34,11 @@ public:
 	// Removes the top element of the queue
 	void PickMinPriority();
 
-	bool Contains(unsigned int queue_element);
+	bool Contains(T queue_element);
 
-	void Insert(unsigned int QueueElem, unsigned int Priority);
+	void Insert(unsigned int QueueElem, T Priority);
 		
-	pairtype Top();
+	T Top();
 
 	unsigned int Size();
 	

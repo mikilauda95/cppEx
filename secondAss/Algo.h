@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 
+typedef pair<unsigned int, pair<unsigned int, unsigned int> > pairtype;
 typedef pair<unsigned int, unsigned int> StartDest;
 class Algo
 {
