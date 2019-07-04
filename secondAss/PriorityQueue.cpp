@@ -28,15 +28,15 @@ void PriorityQueue<T> :: PrintQueue(){
 
 
 template<class T>
-void PriorityQueue<T> :: Insert(unsigned int Priority, T QueueElem){
-	T tmp(Priority, QueueElem);
+void PriorityQueue<T> :: Insert(T QueueElem){
+	T tmp(QueueElem);
 	Queue.push(tmp);
 	NumElements ++;
 }
 
 template<class T>
-void PriorityQueue<T> :: DecrPriority(unsigned int QueueElem, unsigned int Priority){
-	Insert(QueueElem, Priority);
+void PriorityQueue<T> :: DecrPriority(T Elem){
+	Insert(Elem);
 }
 
 template<class T>

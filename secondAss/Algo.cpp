@@ -12,29 +12,32 @@ Algo :: Algo(Graph G):G(G){
 }
 
 vector<unsigned int> Algo :: ComputeShortestPath(unsigned int start,unsigned int dest){
-	PriorityQueue<unsigned int> openSet;
-	PriorityQueue<StartDest> closeSet;
+	PriorityQueue<QueueType> openSet;
+	PriorityQueue<QueueType> closeSetPaths;
+	PriorityQueue<unsigned int> closeSet;
 	vector<unsigned int> adiacents;
-	openSet.Insert(0, start);
-	pairtype nextNode;
+	QueueType nextNode;
 	unsigned int Cost, Node;
 	nextNode.first = 0;
-	nextNode.second = start;
+	nextNode.second.first = start;
+	nextNode.second.second = start;
+	openSet.Insert(nextNode);
 	while (1) {
-		closeSet.Insert(nextNode.first, nextNode.second);
-		if (nextNode.second == dest && closeSet.Contains(dest)){
+		closeSetPaths.Insert(openSet.Top());
+		closeSet.Insert(openSet.Top().second.second);
+		if (nextNode.second.second == dest && closeSet.Contains(dest)){
 			cout << nextNode.first << endl;
 			break;
 		}
 		cout << "Close set is now : " << endl;
 		closeSet.PrintQueue();
-		adiacents = G.GetAdiacents(nextNode.second);
-		G.PrintAdiacents(nextNode.second);
-		cout << nextNode.first << " " << nextNode.second << endl;
+		adiacents = G.GetAdiacents(nextNode.second.second);
+		G.PrintAdiacents(nextNode.second.second);
+		//cout << nextNode.first << " " << nextNode.second << endl;
 		for (int i = 0; i < adiacents.size(); ++i) {
 			Node = adiacents[i];
-			Cost = nextNode.first + G.GetEdgeValue(Node, nextNode.second);
-			openSet.Insert(Cost, Node);
+			Cost = nextNode.first + G.GetEdgeValue(Node, nextNode.second.second);
+			openSet.Insert( make_pair(Cost, make_pair(nextNode.second.second, Node)));
 		}
 		cout << "Open set is now : " << endl;
 		openSet.PrintQueue();

@@ -9,13 +9,13 @@
 #include <iostream>
 using namespace std;
 
-typedef pair<unsigned int, pair<unsigned int, unsigned int> > pairtype;
+typedef pair<unsigned int, pair<unsigned int, unsigned int> > QueueType;
 typedef pair<unsigned int, unsigned int> StartDest;
 class Algo
 {
 private:
 	Graph G;
-	PriorityQueue Q;
+	//PriorityQueue Q;
 	vector<pair<StartDest, vector<unsigned int> > > ShortPathList; 
 
 	vector<unsigned int> ComputeShortestPath(unsigned int start,unsigned int dest);

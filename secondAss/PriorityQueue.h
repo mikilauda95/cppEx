@@ -29,14 +29,14 @@ public:
 	void PrintQueue();
 
 	//Implemented as lazy delete
-	void DecrPriority(unsigned int QueueElem, unsigned int Priority);
+	void DecrPriority(T Priority);
 
 	// Removes the top element of the queue
 	void PickMinPriority();
 
 	bool Contains(T queue_element);
 
-	void Insert(unsigned int QueueElem, T Priority);
+	void Insert(T Priority);
 		
 	T Top();
 
@@ -45,3 +45,4 @@ public:
 };
 
 #endif /* PRIORITYQUEUE_H */
+
