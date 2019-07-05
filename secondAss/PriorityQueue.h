@@ -1,6 +1,7 @@
 #ifndef PRIORITYQUEUE_H
 #define PRIORITYQUEUE_H
 
+#include "Mypair.h"
 #include <functional>
 #include <queue>
 #include <vector>
@@ -10,14 +11,15 @@ using namespace std;
 
 
 
-typedef pair<unsigned int, unsigned int> pairtype;
+typedef pair<unsigned int, unsigned int> Mypair;
 
-template<class T>
-class PriorityQueue
+template<class T> 
+class PriorityQueue : public T
 {
 private:
 	unsigned int NumElements;
 
+	//template<class T>
 	priority_queue<T, vector<T>, greater<T> > Queue;
 
 

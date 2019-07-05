@@ -61,7 +61,7 @@ template<class T>
 bool PriorityQueue<T> :: Contains(T queue_element){
 	std::priority_queue<T, vector<T>, greater<T> > temp = Queue;
 	while(!temp.empty()){
-		if (temp.top().second == queue_element) {
+		if (temp.top().second == queue_element.second) {
 			return true;	
 		}
 		temp.pop();
@@ -69,3 +69,5 @@ bool PriorityQueue<T> :: Contains(T queue_element){
 	return false;
 }
 
+template class PriorityQueue<Mypair>;
+template class PriorityQueue<Mypair2>;
