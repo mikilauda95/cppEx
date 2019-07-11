@@ -1,7 +1,7 @@
 #include <stdlib.h>
+#include <time.h>
 #include <iostream>
 #include <string.h>
-#include <time.h>
 #include <vector>
 
 #include "Graph.h"
@@ -9,12 +9,11 @@ using namespace std;
 
 
 // Void Constructor
-Graph :: Graph(float D, unsigned int N) : Density(D), NumNodes(N){
+Graph :: Graph(float D, unsigned int N, unsigned int MaxRange) : Density(D), NumNodes(N), MaxRange(MaxRange){
 	if (D > 100) {
 		return;
 	}
 
-	srand(time(NULL));
 
 	typedef vector<vector<unsigned int> > matrix;
 	matrix Mat(NumNodes, vector<unsigned int>(NumNodes));
@@ -28,7 +27,7 @@ Graph :: Graph(float D, unsigned int N) : Density(D), NumNodes(N){
 			}
 			else{
 				if((rand()%100) < Density) {
-					Mat[i][j] = Mat[j][i] = (rand()%50) + 1;
+					Mat[i][j] = Mat[j][i] = (rand()%MaxRange) + 1;
 				}
 			}
 		}	
@@ -119,7 +118,9 @@ vector<unsigned int> Graph :: GetAdiacents(unsigned int NodeNum){
 	vector<unsigned int> tmp;
 	for (int i = 0; i < NumNodes; ++i) {
 		if (EdgeMatrix[i][NodeNum] > 0) {
-			tmp.push_back(i);
+			if (i != NodeNum) {
+				tmp.push_back(i);
+			}
 		}
 	}
 	return tmp;

@@ -9,13 +9,14 @@ class Graph
 {
 	private:
 		unsigned int NumNodes;	
+		unsigned int MaxRange;	
 		float Density;	
 		vector<vector<unsigned int> > EdgeMatrix;
 		vector<string> ValueVector;
 
 	public:
 		// Void Constructor
-		Graph(float D = 0.0, unsigned int N = 50);
+		Graph(float D = 0.0, unsigned int N = 50, unsigned int MaxRange = 50);
 		// Copy Constructor
 		Graph(const Graph& G);
 		// Destructor

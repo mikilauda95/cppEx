@@ -21,10 +21,14 @@ using namespace std;
 
 typedef pair<unsigned int, unsigned int> Mypair;
 
-ostream& operator<<(ostream& s, const Mypair& p){
-	return s << "(" << p.first << ", " << p.second << ")";
-}
+//ostream& operator<<(ostream& s, const Mypair& p);
 
-typedef pair<unsigned int, Mypair> Mypair2;
+typedef pair<unsigned int, Mypair> Mypair2; 
+
+// C++ template to print pair<> 
+// // class by using template 
+
+//template <typename T, typename S> 
+//ostream& operator<<(ostream& os, const pair<T, S>& v);
 
 #endif /* MYPAIR_H */

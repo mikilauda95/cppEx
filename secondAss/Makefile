@@ -1,11 +1,12 @@
 CC=g++
-CFLAGS=-I.
+CFLAGS="-I. -std=c++11"
 
-OBJ = testalgo.o Graph.o PriorityQueue.o Algo.o
 OBJ1 = testgraph.o Graph.o 
 OBJ2 = testqueue.o PriorityQueue.o
+OBJ3 = testalgo.o Graph.o PriorityQueue.o Algo.o
+OBJ = main.o Graph.o PriorityQueue.o Algo.o
 
-DEPS = Graph.h PriorityQueue.h
+DEPS = Graph.h PriorityQueue.h Algo.h Mypair.h
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -20,3 +21,5 @@ testqueue: $(OBJ2)
 testalgo: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
 
+mc: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS)
