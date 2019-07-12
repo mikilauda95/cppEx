@@ -9,6 +9,8 @@ using namespace std;
 
 
 // Void Constructor
+// Graph implemented as an edge matrix
+// Default constructor generates a random matrix based on the parameters passed
 Graph :: Graph(float D, unsigned int N, unsigned int MaxRange) : Density(D), NumNodes(N), MaxRange(MaxRange){
 	if (D > 100) {
 		return;
@@ -33,19 +35,6 @@ Graph :: Graph(float D, unsigned int N, unsigned int MaxRange) : Density(D), Num
 		}	
 	}
 	EdgeMatrix = Mat;
-
-	//vector<unsigned int> Row;
-	//for (int i = 0; i < NumNodes; ++i) {
-	//Row.clear();
-	//for (int j = 0; j < NumNodes; ++j) {
-	//if (j!=i) {
-	//if((rand()%100) < Density) {
-	//Row.push_back(j);
-	//}
-	//}
-	//}	
-	//EdgeMatrix.push_back(Row);
-	//}
 }
 
 // Copy Constructor

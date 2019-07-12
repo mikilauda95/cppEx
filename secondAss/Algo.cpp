@@ -14,6 +14,7 @@ Algo :: Algo(Graph G):G(G){
 	//Implement some checks
 }
 
+// Overload the pair type to print it easily
 template <typename T, typename S> 
 ostream& operator<<(ostream& os, const pair<T, S>& v) 
 { 
@@ -22,18 +23,23 @@ ostream& operator<<(ostream& os, const pair<T, S>& v)
 	return os; 
 } 
 
+// Auxiliary function used by GetPath
 unsigned int search_next(unsigned int nextNode, PriorityQueue<QueueType, less<QueueType> >& Q){
+	// Keep scrolling the list until the nextNode is the destination node of another path in the close set
 	while (Q.Top().second.second != nextNode) {
 		Q.PickMinPriority();
 	}
 	return Q.Top().second.first;
 }
 
+//Compute the list of nodes of the shortest Path from the Priority queue of the Close Set
 vector<unsigned int> GetPath(unsigned int start, unsigned int dest, PriorityQueue<QueueType, less<QueueType> > Q)
 {
+	// Starting from the destination, chain the destinations and start point to get the Path
 	vector<unsigned int> tmp;
 	unsigned nextNode = dest;
 	tmp.push_back(nextNode);
+	// stop when we arrive at the start node
 	while(nextNode != start){
 		nextNode = search_next(nextNode, Q);
 		tmp.push_back(nextNode);
@@ -45,7 +51,10 @@ vector<unsigned int> GetPath(unsigned int start, unsigned int dest, PriorityQueu
 	return tmp;
 	
 }
+//
+//Compute the shortest Path and update the data members containing sizes and path
 void Algo :: ComputeShortestPath(unsigned int start,unsigned int dest){
+	
 	//Debug
 	//cout << "Computing shortest path from node " << start << " to node " << "dest " << dest << endl;
 	
@@ -115,12 +124,12 @@ Algo :: ~Algo(){
 }
 
 
-// Compute (if not computed) and return the shortest path between two vertices as a list of nodes
+//Return the last shortest path between two vertices as a list of nodes
 vector<unsigned int> Algo :: path(unsigned int start,unsigned int dest){
 		return this->ShortPathList.back().second;	
 }
 
-// Compute (if not computed) and return path size (sum of the distances) between two vertices
+//Return the last shortest path size computed (sum of the distances) between two vertices
 unsigned int Algo :: path_size(unsigned int u,unsigned int w){
 		return this->ShortPathSizes.back().second;	
 }

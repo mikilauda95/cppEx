@@ -6,7 +6,8 @@
 #include <iostream>
 using namespace std;
 
-	template <typename T, typename S> 
+// Overload the << operator to print pairs
+template <typename T, typename S> 
 ostream& operator<<(ostream& os, const pair<T, S>& v) 
 { 
 	os << "("; 
@@ -36,6 +37,7 @@ void PriorityQueue<T, S> :: PrintQueue(){
 }
 
 
+// Insert an elemente to a list
 template<class T, class S > 
 void PriorityQueue<T, S> :: Insert(T QueueElem){
 	//T tmp(QueueElem);
@@ -46,26 +48,12 @@ void PriorityQueue<T, S> :: Insert(T QueueElem){
 	NumElements ++;
 }
 
+//The Remove method is not implemented as not necessary in the algorithm
 template<class T, class S >
 bool PriorityQueue<T, S > :: Remove(T QueueElem){
-	//std :: vector<double> :: iterator it = std::find(this->c.begin(), this->c.end(), QueueElem);
-	//for (int i = 0; i < this->c.size(); ++i) {
-		//if (this->c[i] == QueueElem) {
-			//this->c.erase(i);
-		//}
-	//}
-	//return false;
-
-	//if (it != this->c.end()) {
-		//this->c.erase(it);
-		//std::make_heap(this->c.begin(), this->c.end(), this->comp);
-		//return true;
-	//}
-	//else {
-		//return false;
-	//}
 }
 
+// The DecrPriority simply looks if the value associated to a certain key is lower than the given value. If so, it adds the element to the Queue (update phase for the open set)
 template<class T, class S > 
 void PriorityQueue<T, S> :: DecrPriority(T Elem){
 	//if (Elem.first < this->Contains(Elem)) {
@@ -77,24 +65,26 @@ void PriorityQueue<T, S> :: DecrPriority(T Elem){
 	}
 }
 
+// Get the size
 template<class T, class S > 
 unsigned int PriorityQueue<T, S> :: Size(){
 	return this->size();
 }
 
+// Get the top of the queue (the smallest/greatest element depending on S template)
 template<class T, class S > 
 T PriorityQueue<T, S> :: Top(){
-	//return Queue.top();
 	return this->top();
 }
 
+// Pop first element
 template<class T, class S > 
 void PriorityQueue<T, S> :: PickMinPriority(){
-	//Queue.pop();
 	this->pop();
 	NumElements--;
 }
 
+// Check if the Queue is empty
 template<class T, class S > 
 bool PriorityQueue<T, S> :: Empty() const{
 	//Queue.empty();
@@ -102,6 +92,7 @@ bool PriorityQueue<T, S> :: Empty() const{
 }
 
 // Workaround to iterate on a list.
+// Check if a certain element is present (compare the key)
 template<class T, class S > 
 unsigned int PriorityQueue<T, S> :: Contains(T queue_element){
 	PriorityQueue<T, S>  temp = *this;
@@ -114,6 +105,7 @@ unsigned int PriorityQueue<T, S> :: Contains(T queue_element){
 	return 0;
 }
 
+// All the PriorityQueue elements are pairs (value and key)
 template class PriorityQueue<pair<unsigned int, unsigned int>, greater<pair<unsigned int, unsigned int> > >;
 
 template class PriorityQueue<pair<unsigned int, unsigned int>, less<pair<unsigned int, unsigned int> > >;

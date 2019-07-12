@@ -11,11 +11,9 @@ using namespace std;
 
 
 
-//typedef pair<unsigned int, unsigned int> Mypair;
-//typedef pair<unsigned int, Mypair> QueueType;
 
+//PriorityQueue inherits from the std::priority_queue and add some functionality to it.
 template<class T, class S = greater<T> > 
-//class PriorityQueue : public T
 class PriorityQueue : public std::priority_queue<T, std::vector<T> , S >
 {
 private:

@@ -10,6 +10,7 @@
 #include <time.h>
 using namespace std;
 
+// Program to compute the average shortest path for a series of Graphs
 int main(int argc, char *argv[])
 {
 	const unsigned int NUM_GRAPHS = 10;
@@ -19,9 +20,12 @@ int main(int argc, char *argv[])
 
 	unsigned int start, dest;
 
+	//Initialize the seed used by rand function inside graph
 	srand(time(NULL));
 	
+	
 	for (int i = 0; i < NUM_GRAPHS; ++i) {
+		//Generate a random graph
 		Graph G(GRAPH_DENS, GRAPH_SIZE, GRAPH_MAXR);
 		G.PrintGraph();
 		Algo A(G);
@@ -30,17 +34,22 @@ int main(int argc, char *argv[])
 			for (dest = 0; dest < GRAPH_SIZE; ++dest) {
 				if (start != dest){
 					vector<unsigned int> path;
+					//Compute the path
 					A.ComputeShortestPath(start, dest);
+					//Get the shortest path computed
 					path = A.path(start, dest);
+					//Get the size of the shortest path computed
 					sizes.push_back(A.path_size(start, dest));
 				}
 			}
 		}
+		// Compute the average
 		unsigned int acc = 0;
 		float average;
 		for (int i = 0; i < sizes.size(); ++i) {
 			acc+=sizes[i];
 		}
+
 
 		average = ((float) acc) / sizes.size();
 		std::cout << "Average Path Size is " << average << std::endl;
