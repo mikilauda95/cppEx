@@ -4,6 +4,7 @@ CFLAGS="-I. -std=c++11"
 OBJ1 = testgraph.o Graph.o 
 OBJ2 = testqueue.o PriorityQueue.o
 OBJ3 = testalgo.o Graph.o PriorityQueue.o Algo.o
+OBJ4 = testfile.o Graph.o 
 OBJ = main.o Graph.o PriorityQueue.o Algo.o
 
 DEPS = Graph.h PriorityQueue.h Algo.h Mypair.h
@@ -18,8 +19,14 @@ testgraph: $(OBJ1)
 testqueue: $(OBJ2)
 	$(CC) -o $@ $^ $(CFLAGS)
 
-testalgo: $(OBJ)
+testalgo: $(OBJ3)
+	$(CC) -o $@ $^ $(CFLAGS)
+
+testfile: $(OBJ4)
 	$(CC) -o $@ $^ $(CFLAGS)
 
 mc: $(OBJ)
 	$(CC) -o $@ $^ $(CFLAGS)
+
+clean:
+	rm *.o

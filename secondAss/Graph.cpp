@@ -1,3 +1,7 @@
+#include <sstream>
+#include <fstream>
+#include <iterator>
+#include <algorithm>
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
@@ -7,6 +11,7 @@
 #include "Graph.h"
 using namespace std;
 
+typedef vector<vector<unsigned int> > matrix;
 
 // Void Constructor
 // Graph implemented as an edge matrix
@@ -17,7 +22,6 @@ Graph :: Graph(float D, unsigned int N, unsigned int MaxRange) : Density(D), Num
 	}
 
 
-	typedef vector<vector<unsigned int> > matrix;
 	matrix Mat(NumNodes, vector<unsigned int>(NumNodes));
 
 
@@ -36,6 +40,51 @@ Graph :: Graph(float D, unsigned int N, unsigned int MaxRange) : Density(D), Num
 	}
 	EdgeMatrix = Mat;
 }
+
+Graph :: Graph(const char* filepath){
+
+	string line;
+	unsigned int i, j, Cost, tmp;
+
+	fstream fp(filepath);
+	if (!fp) {
+		std::cout << "Error when opening the file" << std::endl;
+		exit(1);
+	}
+
+	fp >> NumNodes;
+	// Debug
+	//cout << NumNodes << endl;
+	
+	matrix Mat(NumNodes, vector<unsigned int>(NumNodes));
+	while (fp >> tmp) {
+		i = tmp;
+		fp >> j;
+		fp >> Cost;
+		Mat[i][j] = Mat[j][i] = Cost;
+
+		//Debug
+		//std::cout << i << j << Cost << std::endl;
+	}
+
+
+	EdgeMatrix = Mat;
+	
+
+	//while(getline(fp, line)){
+		//std::cout << line << std::endl;
+
+		//stringstream parser(line);
+		//parser >> i;
+		//parser >> j;
+		//parser >> Cost;
+
+		//Mat[i][j] = Mat[j][i] = Cost;
+
+	//}
+
+}
+
 
 // Copy Constructor
 Graph :: Graph(const Graph& G){

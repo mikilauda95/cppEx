@@ -19,6 +19,8 @@ class Graph
 		Graph(float D = 0.0, unsigned int N = 50, unsigned int MaxRange = 50);
 		// Copy Constructor
 		Graph(const Graph& G);
+		// Read graph from a file constructor
+		Graph(const char* filepath);
 		// Destructor
 		virtual ~Graph();
 
