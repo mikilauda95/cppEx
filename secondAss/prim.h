@@ -21,7 +21,7 @@ private:
 public:
 	Prim(Graph G);
 	virtual ~Prim();
-	unsigned int CompMinSpanningTree(unsigned int start, unsigned int dest);
+	unsigned int CompMinSpanningTree(void);
 };
 
 
